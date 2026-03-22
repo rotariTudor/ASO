@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="CitireFisier/CitireFisier.vcxproj" Id="8bdd95ae-a38a-4b61-a3fb-e41b3061ae69" />
+</Solution>

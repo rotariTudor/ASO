@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tudor\\Desktop\\Uni\\Anul 3\\sem_2\\ASO\\CitireFisier\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BDD95AE-A38A-4B61-A3FB-E41B3061AE69}|CitireFisier\\CitireFisier.vcxproj|C:\\Users\\Tudor\\Desktop\\Uni\\Anul 3\\sem_2\\ASO\\CitireFisier\\CitireFisier\\CitireFisier.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8BDD95AE-A38A-4B61-A3FB-E41B3061AE69}|CitireFisier\\CitireFisier.vcxproj|solutionrelative:CitireFisier\\CitireFisier.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CitireFisier.c",
+              "DocumentMoniker": "C:\\Users\\Tudor\\Desktop\\Uni\\Anul 3\\sem_2\\ASO\\CitireFisier\\CitireFisier\\CitireFisier.c",
+              "RelativeDocumentMoniker": "CitireFisier\\CitireFisier.c",
+              "ToolTip": "C:\\Users\\Tudor\\Desktop\\Uni\\Anul 3\\sem_2\\ASO\\CitireFisier\\CitireFisier\\CitireFisier.c",
+              "RelativeToolTip": "CitireFisier\\CitireFisier.c",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2026-03-22T09:13:18.051Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

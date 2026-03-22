@@ -1,0 +1,3 @@
+﻿  CitireFisier.c
+C:\Users\Tudor\Desktop\Uni\Anul 3\sem_2\ASO\CitireFisier\CitireFisier\CitireFisier.c(35,17): warning C4013: 'fnCitesteSiAfiseazaFisier' undefined; assuming extern returning int
+  CitireFisier.vcxproj -> C:\Users\Tudor\Desktop\Uni\Anul 3\sem_2\ASO\CitireFisier\x64\Debug\CitireFisier.exe
