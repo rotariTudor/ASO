@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="RegKey/RegKey.vcxproj" Id="9741f8a6-53e2-4f40-bbbf-495572148fd1" />
+</Solution>
