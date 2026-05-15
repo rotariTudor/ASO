@@ -1,0 +1,108 @@
+@model IEnumerable<TodoItem>
+@{
+    ViewData["Title"] = "Lista de Task-uri";
+}
+
+<div class="page-hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Lista mea de task-uri</h1>
+        <p class="hero-sub">Organizează-ți ziua eficient.</p>
+    </div>
+    <div class="stats-bar">
+        <div class="stat">
+            <span class="stat-num">@ViewBag.Total</span>
+            <span class="stat-label">Total</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">@ViewBag.Active</span>
+            <span class="stat-label">Active</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">@ViewBag.Completed</span>
+            <span class="stat-label">Finalizate</span>
+        </div>
+    </div>
+</div>
+
+<div class="toolbar">
+    <div class="filter-group">
+        <a href="/Todo?filter=all"       class="filter-btn @(ViewBag.Filter == "all"       ? "active" : "")">Toate</a>
+        <a href="/Todo?filter=active"    class="filter-btn @(ViewBag.Filter == "active"    ? "active" : "")">Active</a>
+        <a href="/Todo?filter=completed" class="filter-btn @(ViewBag.Filter == "completed" ? "active" : "")">Finalizate</a>
+    </div>
+    <div class="priority-filter">
+        <a href="/Todo?filter=@ViewBag.Filter" class="filter-btn @(ViewBag.Priority == "" ? "active" : "")">Toate prioritățile</a>
+        <a href="/Todo?filter=@ViewBag.Filter&priority=High"   class="filter-btn prio-high   @(ViewBag.Priority == "High"   ? "active" : "")">Urgente</a>
+        <a href="/Todo?filter=@ViewBag.Filter&priority=Medium" class="filter-btn prio-medium @(ViewBag.Priority == "Medium" ? "active" : "")">Medii</a>
+        <a href="/Todo?filter=@ViewBag.Filter&priority=Low"    class="filter-btn prio-low    @(ViewBag.Priority == "Low"    ? "active" : "")">Mici</a>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h3>Nicio sarcină găsită</h3>
+        <p>Adaugă primul tău task pentru a începe!</p>
+        <a href="/Todo/Create" class="btn btn-primary">+ Adaugă Task</a>
+    </div>
+}
+else
+{
+    <ul class="todo-list">
+        @foreach (var item in Model)
+        {
+            <li class="todo-item @(item.IsCompleted ? "completed" : "") prio-@item.Priority.ToString().ToLower()">
+                <div class="todo-left">
+                    <form asp-action="ToggleComplete" asp-route-id="@item.Id" method="post" class="inline-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="check-btn" title="@(item.IsCompleted ? "Marchează ca activ" : "Marchează ca finalizat")">
+                            <span class="check-circle @(item.IsCompleted ? "checked" : "")">
+                                @if (item.IsCompleted) { <text>✓</text> }
+                            </span>
+                        </button>
+                    </form>
+                </div>
+                <div class="todo-body">
+                    <span class="todo-title">@item.Title</span>
+                    @if (!string.IsNullOrEmpty(item.Description))
+                    {
+                        <span class="todo-desc">@item.Description</span>
+                    }
+                    <div class="todo-meta">
+                        <span class="badge badge-@item.Priority.ToString().ToLower()">
+                            @(item.Priority == Priority.High ? "🔴 Urgent" :
+                              item.Priority == Priority.Medium ? "🟡 Mediu" : "🟢 Mic")
+                        </span>
+                        <span class="meta-date">Creat: @item.CreatedAt.ToString("dd MMM yyyy")</span>
+                        @if (item.IsCompleted && item.CompletedAt.HasValue)
+                        {
+                            <span class="meta-date done-date">✓ Finalizat: @item.CompletedAt.Value.ToString("dd MMM yyyy")</span>
+                        }
+                    </div>
+                </div>
+                <div class="todo-actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="action-btn edit-btn" title="Editează">✏️</a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="inline-form"
+                          onsubmit="return confirm('Ești sigur că vrei să ștergi acest task?')">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="action-btn delete-btn" title="Șterge">🗑️</button>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+
+    @if (ViewBag.Completed > 0)
+    {
+        <div class="bulk-actions">
+            <form asp-action="DeleteCompleted" method="post"
+                  onsubmit="return confirm('Ștergi toate task-urile finalizate?')">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger-outline">
+                    🗑️ Șterge toate finalizatele (@ViewBag.Completed)
+                </button>
+            </form>
+        </div>
+    }
+}
